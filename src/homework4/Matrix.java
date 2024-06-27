@@ -96,13 +96,10 @@ public class Matrix {
         Double numbers;
         Double numbersAround;
         Double result;
+        boolean resultBoolean;
         for (int i = 0; i < diagonals.length; i++) {
-            if (String.valueOf(diagonals[i]) instanceof String) {
-                System.out.print(diagonals[i].substring(2, 5) + ", ");
-                sliceString.append(diagonals[i].substring(2, 5));
-
-            } else if ((String.valueOf(diagonals[i]) instanceof String) == false) {
-
+            try {
+               Double.parseDouble(diagonals[i]);
                 numbers = Double.parseDouble(diagonals[i]);
                 numbersString = String.format("%.2f", numbers);
                 numbers = Double.parseDouble(numbersString);
@@ -117,10 +114,18 @@ public class Matrix {
                 if (Math.abs(numbersAround - numbers) > 0.7) {
 
                     result = Math.floor(numbers);
-                    sliceString.append(String.valueOf(numbers));
+                    sliceString.append(String.valueOf(result));
 
                 }
+
             }
+            catch (Exception e){
+                resultBoolean=false;
+                System.out.print(diagonals[i].substring(1, 4) + ", ");
+                sliceString.append(diagonals[i].substring(1, 4)+",");
+
+            }
+            resultBoolean=true;
         }
         return sliceString;
     }
