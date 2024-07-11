@@ -33,7 +33,11 @@ public class Main {
 
     }
 
-    public static int dividingNumbers(int dividend, int divider) {
+    public static int dividingNumbers(int a, int b) throws MyException{
+        return linkDividingNumbers(a, b);
+    }
+
+    public static int linkDividingNumbers(int dividend, int divider) {
 
         int a;
 
